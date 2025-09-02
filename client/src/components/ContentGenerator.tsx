@@ -89,7 +89,7 @@ const ContentGenerator: React.FC = () => {
 
   useEffect(() => {
     loadTopics();
-  });
+  }, [loadTopics]);
 
   const loadTopics = useCallback(async () => {
     try {
