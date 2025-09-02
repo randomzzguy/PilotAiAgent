@@ -16,8 +16,9 @@
 1. Go to [vercel.com](https://vercel.com) and sign in with GitHub
 2. Click "New Project"
 3. Import your GitHub repository
-4. Vercel will automatically detect it's a React app
-5. Click "Deploy"
+4. **Important**: When Vercel asks for the source code directory, enter: `client`
+5. Vercel will then detect it's a React app
+6. Click "Deploy"
 
 ### Step 3: Configure Environment Variables
 In Vercel Dashboard > Project Settings > Environment Variables, add:
