@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './ContentGenerator.css';
 
 interface Topic {
@@ -89,9 +89,9 @@ const ContentGenerator: React.FC = () => {
 
   useEffect(() => {
     loadTopics();
-  }, []);
+  });
 
-  const loadTopics = async () => {
+  const loadTopics = useCallback(async () => {
     try {
       // Try to fetch from API first
       const response = await fetch('/api/content/topics');
@@ -105,7 +105,7 @@ const ContentGenerator: React.FC = () => {
       console.log('Using fallback marine topics data');
       setTopics(fallbackTopics);
     }
-  };
+  }, []);
 
   const generateFallbackContent = (topicName: string): GeneratedContent[] => {
     const contentTemplates = {
