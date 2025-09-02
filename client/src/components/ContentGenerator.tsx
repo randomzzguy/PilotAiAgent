@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import './ContentGenerator.css';
 
 interface Topic {
@@ -24,7 +24,7 @@ const ContentGenerator: React.FC = () => {
   const [error, setError] = useState<string>('');
 
   // Fallback marine topics data
-  const fallbackTopics: Topic[] = [
+  const fallbackTopics: Topic[] = useMemo(() => [
     {
       id: '1',
       name: 'Marine Safety & Compliance',
@@ -85,7 +85,7 @@ const ContentGenerator: React.FC = () => {
       description: 'Case studies from marine inspection projects',
       category: 'Success'
     }
-  ];
+  ], []);
 
   const loadTopics = useCallback(async () => {
     try {
