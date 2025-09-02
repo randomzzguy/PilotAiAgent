@@ -87,10 +87,6 @@ const ContentGenerator: React.FC = () => {
     }
   ];
 
-  useEffect(() => {
-    loadTopics();
-  }, [loadTopics]);
-
   const loadTopics = useCallback(async () => {
     try {
       // Try to fetch from API first
@@ -106,6 +102,10 @@ const ContentGenerator: React.FC = () => {
       setTopics(fallbackTopics);
     }
   }, []);
+
+  useEffect(() => {
+    loadTopics();
+  }, [loadTopics]);
 
   const generateFallbackContent = (topicName: string): GeneratedContent[] => {
     const contentTemplates = {
