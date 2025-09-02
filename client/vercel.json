@@ -10,40 +10,11 @@
       }
     }
   ],
-  "routes": [
-    {
-      "src": "/static/(.*)",
-      "headers": {
-        "cache-control": "s-maxage=31536000,immutable"
-      }
-    },
-    {
-      "src": "/favicon.ico",
-      "dest": "/favicon.ico"
-    },
-    {
-      "src": "/asset-manifest.json",
-      "dest": "/asset-manifest.json"
-    },
-    {
-      "src": "/manifest.json",
-      "dest": "/manifest.json"
-    },
-    {
-      "src": "/robots.txt",
-      "dest": "/robots.txt"
-    },
-    {
-      "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot))",
-      "headers": {
-        "cache-control": "s-maxage=31536000,immutable"
-      }
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*)",
