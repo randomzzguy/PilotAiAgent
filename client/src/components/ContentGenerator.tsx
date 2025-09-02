@@ -101,7 +101,7 @@ const ContentGenerator: React.FC = () => {
       console.log('Using fallback marine topics data');
       setTopics(fallbackTopics);
     }
-  }, []);
+  }, [fallbackTopics]);
 
   useEffect(() => {
     loadTopics();
