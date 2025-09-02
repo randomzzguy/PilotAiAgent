@@ -1,3 +1,5 @@
 # https://www.robotstxt.org/robotstxt.html
+# This file prevents search engines from indexing this application
+# for privacy and security purposes
 User-agent: *
-Disallow:
+Disallow: /

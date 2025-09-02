@@ -1,0 +1,88 @@
+{
+  "version": 2,
+  "name": "linkedin-content-generator",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "headers": {
+        "cache-control": "s-maxage=31536000,immutable"
+      }
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico"
+    },
+    {
+      "src": "/asset-manifest.json",
+      "dest": "/asset-manifest.json"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/robots.txt"
+    },
+    {
+      "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot))",
+      "headers": {
+        "cache-control": "s-maxage=31536000,immutable"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
+  "env": {
+    "REACT_APP_ACCESS_PASSWORD": "@react_app_access_password",
+    "REACT_APP_API_URL": "@react_app_api_url",
+    "REACT_APP_APP_NAME": "@react_app_app_name",
+    "REACT_APP_COMPANY_NAME": "@react_app_company_name",
+    "REACT_APP_ENABLE_PASSWORD_PROTECTION": "@react_app_enable_password_protection",
+    "REACT_APP_ENVIRONMENT": "@react_app_environment"
+  },
+  "build": {
+    "env": {
+      "REACT_APP_ACCESS_PASSWORD": "@react_app_access_password",
+      "REACT_APP_API_URL": "@react_app_api_url",
+      "REACT_APP_APP_NAME": "@react_app_app_name",
+      "REACT_APP_COMPANY_NAME": "@react_app_company_name",
+      "REACT_APP_ENABLE_PASSWORD_PROTECTION": "@react_app_enable_password_protection",
+      "REACT_APP_ENVIRONMENT": "@react_app_environment"
+    }
+  }
+}
