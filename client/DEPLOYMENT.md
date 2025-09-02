@@ -12,25 +12,38 @@
 2. Ensure `.env.local` is in `.gitignore` (already configured)
 3. Only commit `.env.example` file
 
-### Step 2: Deploy to Vercel
+### Step 2: Set Up Environment Variables in Vercel
+**IMPORTANT**: You must set up environment variables BEFORE deploying, otherwise the deployment will fail.
+
 1. Go to [vercel.com](https://vercel.com) and sign in with GitHub
 2. Click "New Project"
 3. Import your GitHub repository
 4. **Important**: When Vercel asks for the source code directory, enter: `client`
-5. Vercel will then detect it's a React app
-6. Click "Deploy"
+5. **Before clicking Deploy**, scroll down to "Environment Variables" section
+6. Add the following required variables:
 
-### Step 3: Configure Environment Variables
-In Vercel Dashboard > Project Settings > Environment Variables, add:
+**Required Environment Variables:**
 
-```
-REACT_APP_ACCESS_PASSWORD=your_secure_password_here
-REACT_APP_API_URL=https://your-api-domain.com (if using backend)
-REACT_APP_APP_NAME=LinkedIn Content Generator
-REACT_APP_COMPANY_NAME=Your Company Name
-REACT_APP_ENABLE_PASSWORD_PROTECTION=true
-REACT_APP_ENVIRONMENT=production
-```
+| Variable Name | Value | Environment |
+|---------------|-------|-------------|
+| `REACT_APP_ACCESS_PASSWORD` | `your-secure-password` | Production |
+| `REACT_APP_ENVIRONMENT` | `production` | Production |
+| `REACT_APP_ENABLE_PASSWORD_PROTECTION` | `true` | Production |
+| `REACT_APP_APP_NAME` | `LinkedIn Content Generator` | Production |
+| `REACT_APP_COMPANY_NAME` | `Your Company Name` | Production |
+
+**Optional Environment Variables:**
+
+| Variable Name | Value | Environment |
+|---------------|-------|-------------|
+| `REACT_APP_API_URL` | `https://your-api-domain.com` | Production |
+
+### Step 3: Complete Deployment
+After setting up environment variables:
+
+1. Click "Deploy" button
+2. Wait for the build to complete
+3. Your app will be available at `https://your-project-name.vercel.app`
 
 ### Step 4: Configure Custom Domain (Subdomain)
 1. In Vercel Dashboard > Project Settings > Domains
